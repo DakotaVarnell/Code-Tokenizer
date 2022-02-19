@@ -3,17 +3,17 @@
 
 
 #Read from the file into a list
-from string import whitespace
+from operator import truediv
 
 
 with open('Tokenizer Lab Repo\Main.jack', 'r') as f:
     file_contents = f.readlines()
-
+ 
 
 symbols = ["(", ")", "{", "}", "[", "]", ",", ";","=", ".", "+", "-", "*", "/", "&", "|", "~", "<", ">"]
 reserved_words = ["class", "constructor", "method", "function", "int", "boolean", "char", "void", "var", "static", "field", "let", "do", "if", "else", "while", "return", "true", "false", "null", "this"]
 
-
+test = "string"
 
 def whiteSpace_comments():
     print("Comment")
@@ -30,40 +30,61 @@ def reservedWords(x):
     else:
         return False
 
-def constants():
-    print("Constants")
+def constants(x):
+    x = str(x)
+    print(x)
+    if x.startswith("\"") and x.endswith("\""):
+        return True
+    else:
+        return False
+    
 
 def identifiers():
     print("Identifiers")
 
-i = 0
-#Read by each word seperated by whitespace
-for file in file_contents:
-    #split the file into lines
-    line = file.split()
-    
-    #Split the lines into words
-    # for word in line:
-    #     print(word)
+def determineType(x):
+    print(x)
 
-    #if the line is empty we skip that line
-    if len(line) == 0:
-        continue
+i = 1 
 
-    #if we find a single line comment at the start of the line we skip
-    elif line[0].startswith("//"):
-        print("Comment/WhiteSpace")
-        continue
+# #Iterate through our entire file
+for lines in file_contents:
+    #Check for the beginning and end of of a multi line comment in the same line
+    if "/**" and "*/" in lines:
+        print("start multi-line and end multi line on line: " + str(i))
+        i+=1
     
-    #if we find a multi line comment at the beginning of the line iterate through each line and each word of those lines until we find the end of it
-    # elif line[0].startswith("/**"):
-        # go = True
-        # while go:
-        #     if line[i] == "*/":
-        #         print(line[i])
-        #         go = False
-        #     i += 1
+    #Check for the ONLY the beginning of a multi line comment on a line
+    elif "/**" in lines:
+        print("start multi on one line on line: " + str(i))
+        i+=1
+
+    #Check whether ONLY the end of the multi-line is in any other line
+    elif "*/" in lines:
+        print("end multi-line on line: " + str(i))
+        i+=1
+
+    #Check for a single line comment
+    elif "//" in lines:
+        print("single line comment")
+        i+=1
+
+    #if its neither a multi line beginning or end, call our determineType function
     else:
-        print("Not Comment")
+        words = lines.split()
+        determineType(words)
+
+    
+    
+        
+        
+
+i +=1
+
+
+
+
+
+
             
            
