@@ -52,49 +52,7 @@ with open("tokenizer_output.xml", "w") as out:
             return True
         else:
             return False
-        
 
-    #def identifiers():
-        #0+0
-
-    #Determine the type of the word
-    def determineType(x):
-        0
-        # #open our file to write to
-        # #with open("tokenizer_output.xml","w") as out:
-        #     #Convert the inputted lines into a string 
-        #     x = str(x)
-
-        #     #Split the leftover string into words
-        #     words = x.split()
-        #     #Iterate through every word within the list of words
-        #     for word in words:
-        #     #if the current word is a symbol return true and then write to the file the symbol
-        #         if symbols(word) == True:
-        #             print("Symbol: " + word)
-        #             #out.write("<Symbol> " + word + " <Symbol>")
-        #         elif reservedWords(word) == True:
-        #             print("Reserved Word: " + word)
-        #             #out.write("<Reserved_Word> " + word + " <Reserved_Word>")
-        #         #if the current word is a string constant, return true and then write the string const to the file
-        #         elif Stringconstant(word) == True:
-        #             print("Constant: " + word)
-        #             #out.write("<Constant> " + word + " <Constant>")
-        #         #if the current word is an Int const, return true and then write it to the file
-        #         elif Integerconstant(word) == True:
-        #             print("Constant: " + word.replace(";", ""))
-        #             #out.write("<Constant> " + word + " <Constant>")
-        #         #if boolean constant retrun true and then write to file
-        #         elif Booleanconstant(word) == True:
-        #             print("Constant: " + word)
-        #             #out.write("<Constant> " + word + " <Constant>")
-        #         #if its anything else just throw it in as an identifier
-        #         else:
-        #             print("Identifier: " + word)
-        #             #out.write("<Identifier> " + word + " <Identifier>")
-
-    # #Iterate through our entire file
-    #i = 1
     for lines in file_contents:
         #Check for the beginning and end of of a multi line comment in the same line
         if "/**" and "*/" in lines:
@@ -120,14 +78,9 @@ with open("tokenizer_output.xml", "w") as out:
             # i+=1
             continue
 
-        #if its neither a multi line beginning or end, call our determineType function
+        #if its neither a multi line beginning or end, call our functions to determineType
         else:
-            #with open("tokenizer_output.xml", "w") as out:
-            #out.write(lines)
-            #determineType(lines)
-            #out.close()
-            #open our file to write to
-        #with open("tokenizer_output.xml","w") as out:
+
             #Convert the inputted lines into a string 
             #x = str(x)
 
@@ -159,10 +112,6 @@ with open("tokenizer_output.xml", "w") as out:
                     print("Identifier: " + word)
                     out.write("<Identifier> " + word + " <Identifier>"+ "\n")
 
-        
-        
-
-#i +=1
 
 
 
